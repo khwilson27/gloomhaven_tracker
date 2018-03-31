@@ -1,0 +1,20 @@
+{
+  "name": "gloomhaven_tracker",
+  "version": "1.0.0",
+  "description": "Assistant to the Gloomhaven board game to reduce clutter, track and store character progress, and more.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khwilson27/gloomhaven_tracker.git"
+  },
+  "author": "kwilson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/khwilson27/gloomhaven_tracker/issues"
+  },
+  "homepage": "https://github.com/khwilson27/gloomhaven_tracker#readme"
+}
