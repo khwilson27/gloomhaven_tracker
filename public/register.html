@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <span id="logo-span">
+                            <img src="assets/img/favicon/ckev_favicon.jpg" alt="cKEV logo" id="navbar-logo" height="20">
+                    </span><span id="brand-name">Gloomhaven Tracker</span>
+                </a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class='navlink'><a id='login_nav' href='#'>Login</a></li>
+                <li class='navlink'><a id='logout_nav' href='#'>Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+               
+                <div class="panel panel-default">
+                    <div class="panel-heading">Register a Character</div>
+                    <div class="panel-body">
+                        
+                        <div class="form-group">
+                            <label for="inputCharName">Character Name</label>
+                            <input type="text" class="form-control" id="inputCharName" placeholder="John">
+                        </div>
+                        
+                        <!-- <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="inputCharClass" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Choose a class
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="inputCharClass">
+                                <li>Brute</li>
+                                <li>Spellweaver</li>
+                                <li>Scoundrel</li>
+                                <li>Mindweaver</li>
+                            </ul>
+                        </div> -->
+
+                        <div class="form-group">
+                            <label for="inputCharClass">Select a character class</label>
+                            <select class="form-control" id="inputCharClass">
+                                <option>Choose a character class</option>
+                                <option>Brute</option>
+                                <option>Spellweaver</option>
+                                <option>Scoundrel</option>
+                                <option>Mindweaver</option>
+                            </select>
+                        </div>
+
+                        <button type="button" class="btn btn-info" style='margin-top: 20px;' id='register_btn'>Register</button>
+
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        // allows user to register...grabs values from form
+        $("#register_btn").on("click", function (event) {
+
+            event.preventDefault();
+
+            if (!$("#inputCharName").val().trim()) {
+                alert("Please enter a name for your character.")
+            } else if ($("#inputCharClass option:selected").text() == 'Choose a character class') {
+                alert("Please pick a class for your character.")
+            } else {
+                var newChar = {
+                    name: $("#inputCharName").val().trim(),
+                    class: $("#inputCharClass option:selected").text()
+                };
+
+                console.log(newChar);
+
+                // sends form values to db
+                $.post("/api/register", newChar)
+                    .done(function (data) {
+                        if (data.error) {
+                            alert("That NAME is already in use!")
+                        } else {
+                            window.location.href = "/";
+                            alert("Registered new character!")
+                        }
+                    });
+            }
+        });
+    </script>
+</body>
+</html>
