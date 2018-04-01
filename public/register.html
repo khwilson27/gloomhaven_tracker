@@ -20,8 +20,8 @@
                 </a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li class='navlink'><a id='login_nav' href='#'>Login</a></li>
-                <li class='navlink'><a id='logout_nav' href='#'>Logout</a></li>
+                <li class='navlink'><a id='login_nav' href='/register'>Login</a></li>
+                <li class='navlink'><a id='logout_nav' href='/register'>Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -31,26 +31,27 @@
             <div class="col-md-12">
                
                 <div class="panel panel-default">
-                    <div class="panel-heading">Register a Character</div>
+                    <div class="panel-heading">Login into an Existing Character</div>
+                    <div class="panel-body">
+                        
+                        <div class="form-group">
+                            <label for="inputCharNameLogin">Character Name</label>
+                            <input type="text" class="form-control" id="inputCharNameLogin" placeholder="John the Brute">
+                        </div>
+
+                        <button type="button" class="btn btn-info" style='margin-top: 20px;' id='login_btn'>Login</button>
+
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Register a New Character</div>
                     <div class="panel-body">
                         
                         <div class="form-group">
                             <label for="inputCharName">Character Name</label>
-                            <input type="text" class="form-control" id="inputCharName" placeholder="John">
+                            <input type="text" class="form-control" id="inputCharName" placeholder="John the Brute">
                         </div>
-                        
-                        <!-- <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="inputCharClass" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                Choose a class
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="inputCharClass">
-                                <li>Brute</li>
-                                <li>Spellweaver</li>
-                                <li>Scoundrel</li>
-                                <li>Mindweaver</li>
-                            </ul>
-                        </div> -->
 
                         <div class="form-group">
                             <label for="inputCharClass">Select a character class</label>
@@ -89,16 +90,38 @@
                     class: $("#inputCharClass option:selected").text()
                 };
 
-                console.log(newChar);
-
                 // sends form values to db
                 $.post("/api/register", newChar)
                     .done(function (data) {
                         if (data.error) {
-                            alert("That NAME is already in use!")
+                            alert(data.error)
                         } else {
                             window.location.href = "/";
                             alert("Registered new character!")
+                        }
+                    });
+            }
+        });
+
+        // allows user to register...grabs values from form
+        $("#login_btn").on("click", function (event) {
+
+            event.preventDefault();
+
+            if (!$("#inputCharNameLogin").val().trim()) {
+                alert("Please enter a name for your character.")
+            } else {
+                console.log($("#inputCharNameLogin").val().trim());
+
+                // sends form value to login
+                $.post("/api/login", { name : $("#inputCharNameLogin").val().trim() })
+                    .done(function (data) {
+                        if (data.error) {
+                            alert(data.error)
+                        } else {
+                            window.localStorage.setItem("id", data.id);
+                            window.location.href = "/";
+                            alert("We found your character!")
                         }
                     });
             }

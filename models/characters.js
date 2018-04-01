@@ -8,7 +8,11 @@ module.exports = function (sequelize, DataTypes) {
         },
         unique: true
       },
-      experience: {
+      class_id: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+      },
+      xp: {
         type: DataTypes.INTEGER,
         allowNull: false,
         default: 0
