@@ -20,8 +20,6 @@
                 </a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li class='navlink'><a id='login_nav' href='/register'>Login</a></li>
-                <li class='navlink'><a id='logout_nav' href='/register'>Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -75,6 +73,7 @@
     </div>
 
     <script type="text/javascript">
+
         // allows user to register...grabs values from form
         $("#register_btn").on("click", function (event) {
 
@@ -94,10 +93,15 @@
                 $.post("/api/register", newChar)
                     .done(function (data) {
                         if (data.error) {
-                            alert(data.error)
+                            if (data.error == "Validation error") {
+                                alert("That name is already in use!")
+                            }
+                            else {
+                                alert(data.error)
+                            }
                         } else {
-                            window.location.href = "/";
-                            alert("Registered new character!")
+                            window.location.href = "/register";
+                            alert("Registered new character! Login with your new character's name!")
                         }
                     });
             }
@@ -105,7 +109,6 @@
 
         // allows user to register...grabs values from form
         $("#login_btn").on("click", function (event) {
-
             event.preventDefault();
 
             if (!$("#inputCharNameLogin").val().trim()) {
@@ -114,12 +117,14 @@
                 console.log($("#inputCharNameLogin").val().trim());
 
                 // sends form value to login
-                $.post("/api/login", { name : $("#inputCharNameLogin").val().trim() })
+                $.post("/api/login", { 
+                        name : $("#inputCharNameLogin").val().trim()
+                    })
                     .done(function (data) {
                         if (data.error) {
-                            alert(data.error)
+                            alert(data.error);
                         } else {
-                            window.localStorage.setItem("id", data.id);
+                            window.localStorage.setItem("token", data.id);
                             window.location.href = "/";
                             alert("We found your character!")
                         }

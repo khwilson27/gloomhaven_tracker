@@ -21,8 +21,8 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li class='navlink'><a id='player_ref_nav' href='#'>Player Reference</a></li>
-                <li class='navlink'><a id='login_nav' href='/register'>Login</a></li>
-                <li class='navlink'><a id='logout_nav' href='/register'>Logout</a></li>
+                <li class='navlink'><a id='login_nav' href='#'>Login</a></li>
+                <li class='navlink'><a id='logout_nav' href='#'>Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -33,7 +33,7 @@
 
                 <div class="panel panel-default">
                     <!-- Default panel contents -->
-                    <div class="panel-heading centered-text"><a href='#'>Inox Brute</a></div>
+                    <div class="panel-heading centered-text"><a href='#' id="character_class">Character Class</a></div>
                     
                     <!-- Table -->
                     <table class="table table-sm table-bordered">
@@ -249,6 +249,70 @@
         <!-- END DETAILS MODAL -->
 
     </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        if (!localStorage.getItem('token')) {
+            window.location.href = "/register"
+        }
+        else {
+
+            $.ajax({
+                url: "/api/characterinfo",
+                type: 'GET',
+                // Fetch the stored token from localStorage and set in the header
+                headers: {
+                    "Authorization": localStorage.getItem('token')
+                },
+                success: function(data) {
+
+                    console.log(data);
+
+                    //-------------------------------------------
+                    //Plug all of user's values into the UI
+                    //-------------------------------------------
+                    //Class
+                    // 01 - Brute
+                    // 02 - Tinkerer
+                    // 03 - Spellweaver
+                    // 04 - Scoundrel
+                    // 05 - Cragheart
+                    // 06 - Mindthief
+
+                    switch(data.class_id) {
+                        case 1:
+                            $("#character_class").text("Inox Brute");
+                            break;
+                        case 2:
+                            $("#character_class").text("Tinkerer");
+                            break;
+                        case 3:
+                            $("#character_class").text("Spellweaver");
+                            break;
+                        case 4:
+                            $("#character_class").text("Scoundrel");
+                            break;
+                        case 5:
+                            $("#character_class").text("Cragheart");
+                            break;
+                        case 6:
+                            $("#character_class").text("Mindthief");
+                            break;
+                    }
+                }
+            })
+
+            // allows user to sign out...deletes token and redirects to login
+            $("#logout_nav").on("click", function (event) {
+                event.preventDefault();
+
+                window.localStorage.removeItem("token");
+                window.location.href = "/register";
+                alert("Logging out...")
+            });
+        }
+    })
+</script>
 
     
 </body>
