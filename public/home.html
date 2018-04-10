@@ -11,7 +11,7 @@
 <body>
 
     <nav class="navbar navbar-inverse">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
                     <span id="logo-span">
@@ -20,31 +20,31 @@
                 </a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li class='navlink'><a id='player_ref_nav' href='#'>Player Reference</a></li>
-                <li class='navlink'><a id='login_nav' href='#'>Login</a></li>
+                <li class='navlink'><a id='player_ref_nav' href='#' class="trigger_modal_info" data-toggle="modal" data-target="#modal_info" data-action="short_guide">Short Guide</a></li>
+                <li class='navlink'><a id='player_ref_nav' href='#' class="trigger_modal_info" data-toggle="modal" data-target="#modal_info" data-action="long_guide">Long Guide</a></li>
                 <li class='navlink'><a id='logout_nav' href='#'>Logout</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
 
                 <div class="panel panel-default">
                     <!-- Default panel contents -->
-                    <div class="panel-heading centered-text"><a href='#' id="character_class">Character Class</a></div>
+                    <div class="panel-heading centered-text"><a class="trigger_modal_info" data-action="show_char_card" href='#' id="character_class" data-toggle="modal" data-target="#modal_info">Character Class</a></div>
                     
                     <!-- Table -->
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
                                 <th width='25%' scope="row">Party:</th>
-                                <td width='75%'><a href='#'>Ecks-pedition</a></td>
+                                <td width='75%'><a href='#' id="party_name" class="trigger_modal_edit" data-action="edit_party" data-toggle="modal" data-target="#modal_edit">Add your Party</a></td>
                             </tr>
                             <tr>
                                 <th width='25%' scope="row">Name:</th>
-                                <td width='75%'><a href='#'>Brutus</a></td>
+                                <td width='75%'><a href='#' id="character_name" class="trigger_modal_edit" data-action="edit_char_name" data-toggle="modal" data-target="#modal_edit">Character Name</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -55,27 +55,27 @@
                     <tbody>
                         <tr>
                             <th width='10%' scope="row">Lvl</th>
-                            <td style='background-color:rgba(76, 175, 80, 0.3)' width='10%'>1</td>
-                            <td width='10%'>2</td>
-                            <td width='10%'>3</td>
-                            <td width='10%'>4</td>
-                            <td width='10%'>5</td>
-                            <td width='10%'>6</td>
-                            <td width='10%'>7</td>
-                            <td width='10%'>8</td>
-                            <td width='10%'>9</td>
+                            <td width='10%' class="xp_lvl_1">1</td>
+                            <td width='10%' class="xp_lvl_2">2</td>
+                            <td width='10%' class="xp_lvl_3">3</td>
+                            <td width='10%' class="xp_lvl_4">4</td>
+                            <td width='10%' class="xp_lvl_5">5</td>
+                            <td width='10%' class="xp_lvl_6">6</td>
+                            <td width='10%' class="xp_lvl_7">7</td>
+                            <td width='10%' class="xp_lvl_8">8</td>
+                            <td width='10%' class="xp_lvl_9">9</td>
                         </tr>
                         <tr>
                             <th width='10%' scope="row">Exp</th>
-                            <td style='background-color:rgba(76, 175, 80, 0.3)' width='10%'>0</td>
-                            <td width='10%'>45</td>
-                            <td width='10%'>95</td>
-                            <td width='10%'>150</td>
-                            <td width='10%'>210</td>
-                            <td width='10%'>275</td>
-                            <td width='10%'>345</td>
-                            <td width='10%'>420</td>
-                            <td width='10%'>500</td>
+                            <td width='10%' class="xp_lvl_1">0</td>
+                            <td width='10%' class="xp_lvl_2">45</td>
+                            <td width='10%' class="xp_lvl_3">95</td>
+                            <td width='10%' class="xp_lvl_4">150</td>
+                            <td width='10%' class="xp_lvl_5">210</td>
+                            <td width='10%' class="xp_lvl_6">275</td>
+                            <td width='10%' class="xp_lvl_7">345</td>
+                            <td width='10%' class="xp_lvl_8">420</td>
+                            <td width='10%' class="xp_lvl_9">500</td>
                         </tr>
                     </tbody>
                 </table>
@@ -84,9 +84,9 @@
                     <tbody>
                         <tr>
                             <td width='25%'>XP:</td>
-                            <td width='25%'><a href='#'>32</a></td>
+                            <td width='25%'><a href='#' id="character_xp" class="trigger_modal_edit" data-action="edit_xp" data-toggle="modal" data-target="#modal_edit">#</a></td>
                             <td width='25%'>Gold:</td>
-                            <td width='25%'><a href='#'>32</a></td>
+                            <td width='25%'><a href='#' id="character_gold" class="trigger_modal_edit" data-action="edit_gold" data-toggle="modal" data-target="#modal_edit">#</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -94,12 +94,12 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Items</div>
                     <div class="panel-body">
-                        <ul>
-                            <li><a href='#'>Leather Armor</a></li>
-                            <li><a href='#'>Minor Stamina Potion</a></li>
+                        <ul id="character_item_list">
+                            <!-- <li><a href='#'>Leather Armor</a></li>
+                            <li><a href='#'>Minor Stamina Potion</a></li> -->
                         </ul>
 
-                        <button type="button" class="btn btn-info" id='add_item_btn'>Add Item</button>
+                        <button type="button" class="btn btn-info" id='add_item_btn' data-toggle="modal" data-target="#modal_edit">Add Item</button>
 
                     </div>
                 </div>
@@ -144,68 +144,68 @@
 
                         <p style='float:left; padding-right: 4px;'>1:</p>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_1">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_2">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_3">
                         </div>
 
                         <p style='float:left; padding-right: 4px;'>2:</p>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_4">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_5">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_6">
                         </div>
 
                         <p style='float:left; padding-right: 4px;'>3:</p>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_7">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_8">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_9">
                         </div>
 
                         <p style='float:left; padding-right: 4px;'>4:</p>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_10">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_11">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_12">
                         </div>
 
                         <p style='float:left; padding-right: 4px;'>5:</p>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_13">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_14"> 
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_15"> 
                         </div>
 
                         <p style='float:left; padding-right: 4px;'>6:</p>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_16">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_17">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_18">
                         </div>
                         
                     </div>
@@ -214,12 +214,31 @@
         </div>
 
         <!-- BEGIN DETAILS MODAL -->
-        <!-- <div id="modalDetails" class="modal fade" role="dialog">
+        <div id="modal_info" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="detail-title">Info</h4>
+                    </div>
+                    <div class="modal-body">
+                        <img width="100%" src="assets/img/character_mats/Brute.png">
+                        <!-- <embed src="assets/pdf/guides/one_sheet_v2.pdf" width="100%" height="600px"/> -->
+                        <!-- <embed src="assets/pdf/guides/rules_summary.pdf" width="100%" height="600px"/> -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-round btn-fill" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal_edit" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="detail-title">titleHere</h4>
+                        <h4 class="modal-title" id="detail-title">Edit</h4>
                     </div>
                     <div class="modal-body">
                         <p><strong>Category:</strong>
@@ -241,11 +260,11 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-round btn-fill" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-success btn-round btn-fill" id="acceptBtn">Accept</button>
+                        <button type="button" class="btn btn-success btn-round btn-fill" id="save_changes_button">Save</button>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
         <!-- END DETAILS MODAL -->
 
     </div>
@@ -256,50 +275,85 @@
             window.location.href = "/register"
         }
         else {
-
-            $.ajax({
-                url: "/api/characterinfo",
-                type: 'GET',
-                // Fetch the stored token from localStorage and set in the header
-                headers: {
-                    "Authorization": localStorage.getItem('token')
-                },
-                success: function(data) {
-
-                    console.log(data);
-
-                    //-------------------------------------------
-                    //Plug all of user's values into the UI
-                    //-------------------------------------------
-                    //Class
-                    // 01 - Brute
-                    // 02 - Tinkerer
-                    // 03 - Spellweaver
-                    // 04 - Scoundrel
-                    // 05 - Cragheart
-                    // 06 - Mindthief
-
-                    switch(data.class_id) {
-                        case 1:
-                            $("#character_class").text("Inox Brute");
-                            break;
-                        case 2:
-                            $("#character_class").text("Tinkerer");
-                            break;
-                        case 3:
-                            $("#character_class").text("Spellweaver");
-                            break;
-                        case 4:
-                            $("#character_class").text("Scoundrel");
-                            break;
-                        case 5:
-                            $("#character_class").text("Cragheart");
-                            break;
-                        case 6:
-                            $("#character_class").text("Mindthief");
-                            break;
-                    }
+            var character_classes = {
+                1: {
+                    name: "Inox Brute",
+                    mat: "assets/img/character_mats/Brute.jpg",
+                    perks: [
+                        {
+                            checkboxQuantity: 1,
+                            text: "Remove two -1 cards"
+                        },
+                        {
+                            checkboxQuantity: 2,
+                            text: "Add two +1 cards"
+                        }
+                    ]
                 }
+            }
+
+            var renderHome = function() {
+                $.ajax({
+                    url: "/api/characterinfo",
+                    type: 'GET',
+                    // Fetch the stored token from localStorage and set in the header
+                    headers: {
+                        "Authorization": localStorage.getItem('token')
+                    },
+                    success: function(data) {
+
+                        console.log(data);
+
+                        //-------------------------------------------
+                        //Plug all of user's values into the UI
+                        //-------------------------------------------
+                        //Class
+                        // 01 - Brute
+                        // 02 - Tinkerer
+                        // 03 - Spellweaver
+                        // 04 - Scoundrel
+                        // 05 - Cragheart
+                        // 06 - Mindthief
+
+                        // Character name, xp, and gold
+                        $("#character_name").text(data.name);
+                        $("#character_xp").text(data.xp);
+                        $("#character_gold").text(data.gold);
+
+                        // Determine level and highlight correct character level and xp
+                        var lvl = 1;
+                        if (data.xp >= 500) {
+                            lvl = 9 
+                        } else if (data.xp >= 420) {
+                            lvl = 8
+                        } else if (data.xp >= 345) {
+                            lvl = 7
+                        } else if (data.xp >= 275) {
+                            lvl = 6
+                        } else if (data.xp >= 210) {
+                            lvl = 5
+                        } else if (data.xp >= 150) {
+                            lvl = 4
+                        } else if (data.xp >= 95) {
+                            lvl = 3
+                        } else if (data.xp >= 45) {
+                            lvl = 2
+                        }
+                        var target_to_hightlight = ".xp_lvl_" + lvl;
+                        $(target_to_hightlight).attr("style", "background-color:rgba(76, 175, 80, 0.3)");
+
+                        // Character class info
+                        var playerClass = character_classes[data.class_id.toString()]
+                        $("#character_class").text(playerClass.name);
+
+                    }
+                })
+            }
+
+            renderHome();
+
+            $(".trigger_modal_edit_edit").on("click", function() {
+                console.log("clicked modal trigger");
             })
 
             // allows user to sign out...deletes token and redirects to login

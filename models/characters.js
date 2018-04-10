@@ -33,14 +33,14 @@ module.exports = function (sequelize, DataTypes) {
       }
     });
   
-    // User.associate = function (models) {
-    //   Character.hasMany(models.Post, {
-    //     onDelete: "CASCADE",
-    //     foreignKey: {
-    //       allowNull: false
-    //     }
-    //   });
-    // };
+    Character.associate = function (models) {
+      Character.hasOne(models.Party, {
+        onDelete: "CASCADE",
+        foreignKey: {
+          allowNull: true
+        }
+      });
+    };
   
     return Character;
   };
