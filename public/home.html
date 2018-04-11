@@ -44,7 +44,7 @@
                             </tr>
                             <tr>
                                 <th width='25%' scope="row">Name:</th>
-                                <td width='75%'><a href='#' id="character_name" class="trigger_modal_edit" data-action="edit_char_name" data-toggle="modal" data-target="#modal_edit">Character Name</a></td>
+                                <td width='75%'><a href='#' id="character_name" class="trigger_modal_edit" data-action="edit_name" data-toggle="modal" data-target="#modal_edit">Character Name</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -83,10 +83,12 @@
                 <table class="table table-sm table-bordered">
                     <tbody>
                         <tr>
-                            <td width='25%'>XP:</td>
-                            <td width='25%'><a href='#' id="character_xp" class="trigger_modal_edit" data-action="edit_xp" data-toggle="modal" data-target="#modal_edit">#</a></td>
-                            <td width='25%'>Gold:</td>
-                            <td width='25%'><a href='#' id="character_gold" class="trigger_modal_edit" data-action="edit_gold" data-toggle="modal" data-target="#modal_edit">#</a></td>
+                            <td width='16.66%'>XP:</td>
+                            <td width='16.66%'><a href='#' id="character_xp" class="trigger_modal_edit" data-action="edit_xp" data-toggle="modal" data-target="#modal_edit">#</a></td>
+                            <td width='16.66%'>Gold:</td>
+                            <td width='16.66%'><a href='#' id="character_gold" class="trigger_modal_edit" data-action="edit_gold" data-toggle="modal" data-target="#modal_edit">#</a></td>
+                            <td width='16.66%'>Notes:</td>
+                            <td width='16.66%'><a href='#' id="character_notes" class="trigger_modal_edit" data-action="edit_notes" data-toggle="modal" data-target="#modal_edit">#</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -141,71 +143,70 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Notes</div>
                     <div class="panel-body">
-
                         <p style='float:left; padding-right: 4px;'>1:</p>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_1">
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_1">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_2">
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_2">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_3">
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_3">
                         </div>
 
                         <p style='float:left; padding-right: 4px;'>2:</p>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_4">
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_4">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_5">
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_5">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_6">
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_6">
                         </div>
 
                         <p style='float:left; padding-right: 4px;'>3:</p>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_7">
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_7">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_8">
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_8">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_9">
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_9">
                         </div>
 
                         <p style='float:left; padding-right: 4px;'>4:</p>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_10">
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_10">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_11">
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_11">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_12">
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_12">
                         </div>
 
                         <p style='float:left; padding-right: 4px;'>5:</p>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_13">
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_13">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_14"> 
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_14"> 
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_15"> 
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_15"> 
                         </div>
 
                         <p style='float:left; padding-right: 4px;'>6:</p>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_16">
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_16">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_17">
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_17">
                         </div>
                         <div class="form-check" style='float:left; padding-right: 4px;'>
-                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." id="character_note_18">
+                            <input class="form-check-input position-static" type="checkbox" value="option1" aria-label="..." id="character_note_18">
                         </div>
                         
                     </div>
@@ -221,11 +222,7 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title" id="detail-title">Info</h4>
                     </div>
-                    <div class="modal-body">
-                        <img width="100%" src="assets/img/character_mats/Brute.png">
-                        <!-- <embed src="assets/pdf/guides/one_sheet_v2.pdf" width="100%" height="600px"/> -->
-                        <!-- <embed src="assets/pdf/guides/rules_summary.pdf" width="100%" height="600px"/> -->
-                    </div>
+                    <div class="modal-body" id="modal_info_body"></div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-round btn-fill" data-dismiss="modal">Close</button>
                     </div>
@@ -238,29 +235,17 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="detail-title">Edit</h4>
+                        <h4 class="modal-title" id="edit_title">Edit: #</h4>
                     </div>
                     <div class="modal-body">
-                        <p><strong>Category:</strong>
-                            <div id="detail-category">categoryHere</div>
-                        </p>
-                        <p><strong>Description:</strong>
-                            <div id="detail-description">descriptionHere</div>
-                        </p>
-                        <hr>
-                        <p><strong>Address:</strong>
-                            <div id="detail-address">addressHere</div>
-                        </p>
-                        <p><strong>Time:</strong>
-                            <div id="detail-time">timeHere</div>
-                        </p>
-                        <p><strong>Posted by:</strong>
-                            <div id="detail-posted-by"></div>
-                        </p>
+                        <div class="form-group">
+                            <label for="edit_value" id="edit_label">Edit Value</label>
+                            <input type="text" class="form-control" id="edit_form" placeholder="John the Brute">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-round btn-fill" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-success btn-round btn-fill" id="save_changes_button">Save</button>
+                        <button type="button" class="btn btn-success btn-round btn-fill" id="update_button">Update</button>
                     </div>
                 </div>
             </div>
@@ -270,6 +255,9 @@
     </div>
 
 <script type="text/javascript">
+    var global_settings = {};
+    var playerClass = null;
+
     $(document).ready(function() {
         if (!localStorage.getItem('token')) {
             window.location.href = "/register"
@@ -278,7 +266,7 @@
             var character_classes = {
                 1: {
                     name: "Inox Brute",
-                    mat: "assets/img/character_mats/Brute.jpg",
+                    mat: "assets/img/character_mats/Brute.png",
                     perks: [
                         {
                             checkboxQuantity: 1,
@@ -303,6 +291,7 @@
                     success: function(data) {
 
                         console.log(data);
+                        global_settings.char_data = data;
 
                         //-------------------------------------------
                         //Plug all of user's values into the UI
@@ -315,10 +304,19 @@
                         // 05 - Cragheart
                         // 06 - Mindthief
 
-                        // Character name, xp, and gold
+                        // Character name, xp, gold, and notes
                         $("#character_name").text(data.name);
                         $("#character_xp").text(data.xp);
                         $("#character_gold").text(data.gold);
+                        $("#character_notes").text(data.notes);
+
+                        // Check boxes for notes and disable
+                        for (var i = 1; i < Number(data.notes) + 1; i++){
+                            var char_note_string = "#character_note_" + i;
+                            $(char_note_string).prop("checked", "true");
+                            if (i >= 19) break;
+                        }
+                        $(":checkbox").on("click", false);
 
                         // Determine level and highlight correct character level and xp
                         var lvl = 1;
@@ -343,16 +341,37 @@
                         $(target_to_hightlight).attr("style", "background-color:rgba(76, 175, 80, 0.3)");
 
                         // Character class info
-                        var playerClass = character_classes[data.class_id.toString()]
+                        playerClass = character_classes[data.class_id.toString()];
                         $("#character_class").text(playerClass.name);
-
                     }
                 })
             }
 
             renderHome();
+                        
+            $(".trigger_modal_info").on("click", function() {
+                $("#modal_info_body").empty();
 
-            $(".trigger_modal_edit_edit").on("click", function() {
+                var action = $(this).data("action");
+                switch (action) {
+                    case "short_guide":
+                        var $embed = $("<embed>", {src: "assets/pdf/guides/one_sheet_v2.pdf", width: "100%", height: "600px"});
+                        $("#modal_info_body").append($embed);
+                        break;
+                    case "long_guide":
+                        var $embed = $("<embed>", {src: "assets/pdf/guides/rules_summary.pdf", width: "100%", height: "600px"});
+                        $("#modal_info_body").append($embed);
+                        break;
+                    case "show_char_card":
+                        var $img = $("<img>", {src: playerClass.mat, width: "100%"});
+                        $("#modal_info_body").append($img);
+                        break;
+                    default:
+                        break;
+                }
+            })
+
+            $(".trigger_modal_edit").on("click", function() {
                 console.log("clicked modal trigger");
             })
 
