@@ -38,10 +38,10 @@
                     <!-- Table -->
                     <table class="table table-sm table-bordered">
                         <tbody>
-                            <tr>
+                            <!-- <tr>
                                 <th width='25%' scope="row">Party:</th>
                                 <td width='75%'><a href='#' id="party_name" class="trigger_modal_edit" data-action="edit_party" data-toggle="modal" data-target="#modal_edit">Add your Party</a></td>
-                            </tr>
+                            </tr> -->
                             <tr>
                                 <th width='25%' scope="row">Name:</th>
                                 <td width='75%'><a href='#' id="character_name" class="trigger_modal_edit" data-action="edit_name" data-toggle="modal" data-target="#modal_edit">Character Name</a></td>
@@ -241,8 +241,9 @@
 
     </div>
 
+<script src="js/character_classes.js"></script> <!-- character class object defined here -->
 <script type="text/javascript">
-    var global_settings = {};
+    var global = {};
     var playerClass = null;
 
     $(document).ready(function() {
@@ -250,59 +251,6 @@
             window.location.href = "/register"
         }
         else {
-            var character_classes = {
-                1: {
-                    name: "Inox Brute",
-                    mat: "assets/img/character_mats/Brute.png",
-                    perks: [
-                        {
-                            checkboxQuantity: 1,
-                            text: "Remove two -1 cards"
-                        },
-                        {
-                            checkboxQuantity: 1,
-                            text: "Replace one -1 card with one +1 card"
-                        },
-                        {
-                            checkboxQuantity: 2,
-                            text: "Add two +1 cards"
-                        },
-                        {
-                            checkboxQuantity: 1,
-                            text: "Add one +3 cards"
-                        },
-                        {
-                            checkboxQuantity: 2,
-                            text: "Add three [PUSH 1] cards"
-                        },
-                        {
-                            checkboxQuantity: 1,
-                            text: "Add two [PIERCE 3] cards "
-                        },
-                        {
-                            checkboxQuantity: 2,
-                            text: "Add one [STUN] card"
-                        },
-                        {
-                            checkboxQuantity: 1,
-                            text: "Add one [DISARM] card and one [MUDDLE] card"
-                        },
-                        {
-                            checkboxQuantity: 2,
-                            text: "Add one [ADD TARGET] card"
-                        },
-                        {
-                            checkboxQuantity: 1,
-                            text: "Add one +1 [SHIELD 1], Self card"
-                        },
-                        {
-                            checkboxQuantity: 1,
-                            text: "Ignore negative item effects and add one -1 card"
-                        }
-                    ]
-                }
-            }
-
             var renderHome = function() {
                 $.ajax({
                     url: "/api/characterinfo",
@@ -313,8 +261,9 @@
                     },
                     success: function(data) {
 
-                        global_settings.char_data = data;
-                        console.log(global_settings);
+                        global.char_data = data;
+                        console.log(global);
+                        console.log(data);
 
                         //-------------------------------------------
                         //Plug all of user's values into the UI
@@ -370,13 +319,18 @@
                         // Render perks list
                         $("#perks_table").empty();
                         for (var i = 0; i < playerClass.perks.length; i++) {
+                            var indexPlus1 = i+1;
+                            var currentkey = "perk_" + indexPlus1;
+                            var current_perk = data[currentkey] ? data[currentkey] : 0;
+                            var learned = (current_perk >= playerClass.perks[i].checkboxQuantity) ? "X" : "";
+
                             var $tablerow = $("<tr>").appendTo($("#perks_table"));
 
                             var $td1 = $("<td>").appendTo($tablerow);
-                            var $a = $("<a>", {"data-action": "edit_xp", "data-toggle": "modal", "data-target": "#modal_edit"}).text("#").appendTo($td1);
+                            var $a = $("<a>", {"data-action": "edit_perk_" + indexPlus1, "data-toggle": "modal", "data-target": "#modal_edit"}).html(current_perk).appendTo($td1);
 
                             var $td2 = $("<td>").text(playerClass.perks[i].checkboxQuantity).appendTo($tablerow);
-                            var $td3 = $("<td>").text("X").appendTo($tablerow);
+                            var $td3 = $("<td>").text(learned).appendTo($tablerow);
                             var $td4 = $("<td>").text(playerClass.perks[i].text).appendTo($tablerow);
                         }
                     }
