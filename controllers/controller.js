@@ -95,30 +95,31 @@ module.exports = function (app) {
 
     // allows user to login
     app.post("/api/login", function (req, res) {
-    console.log(req.body);
-    if (!req.body.name) {
-        res.json({ error: "We didn't get your name from your browser!" });
-    } else {
+        console.log(req.body);
+        if (!req.body.name) {
+            res.json({ error: "We didn't get your name from your browser!" });
+        } else {
         
-        // find character with input name
-        db.Character.findOne({ where: { name: req.body.name} }).then(function (data) {
+            // find character with input name
+            db.Character.findOne({ where: { name: req.body.name} }).then(function (data) {
+                if (!data) {
+                    res.json({
+                        success: false,
+                        error: 'Character not found.',
+                        id: null
+                    });
+                } else {
+                    res.json({
+                        success: true,
+                        message: 'Character found.',
+                        id: data.id
+                    });
+                }
+            }).catch(function (err) {
+                res.json({ error: err.message });
+            });;
 
-            if (!data) {
-                res.json({
-                    success: false,
-                    error: 'Character not found.',
-                    id: null
-                });
-            } else {
-                res.json({
-                    success: true,
-                    message: 'Character found.',
-                    id: data.id
-                });
-            }
-        });
-
-    }
+        }
     });
 
     // Get route for getting a single user's posts that they created
@@ -141,8 +142,48 @@ module.exports = function (app) {
                 res.json(data);
             }
 
-        });
+        }).catch(function (err) {
+            res.json({ error: err.message });
+        });;
 
+    });
+
+    // update character info
+    app.put("/api/characterinfo", function (req, res) {
+        db.Character.update({
+            name: req.body.name,
+            xp: req.body.xp,
+            gold: req.body.gold,
+            notes: req.body.notes,
+            perk_1: req.body.perk_1,
+            perk_2: req.body.perk_2,
+            perk_3: req.body.perk_3,
+            perk_4: req.body.perk_4,
+            perk_5: req.body.perk_5,
+            perk_6: req.body.perk_6,
+            perk_7: req.body.perk_7,
+            perk_8: req.body.perk_8,
+            perk_9: req.body.perk_9,
+            perk_10: req.body.perk_10,
+            perk_11: req.body.perk_11,
+            perk_12: req.body.perk_12
+        }, {
+            where: {
+                id: req.body.id
+            }
+        }).then(function (data) {
+            if (!data) {
+                res.json({
+                    success: false,
+                    error: 'Character info not found.'
+                });
+            } else {
+                data.success = true;
+                res.json(data);
+            }
+        }).catch(function (err) {
+            res.json({ error: err.message });
+        });
     });
 
 } // close module export function

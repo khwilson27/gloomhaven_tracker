@@ -104,8 +104,18 @@
                                 alert(data.error)
                             }
                         } else {
-                            window.location.href = "/register";
-                            alert("Registered new character! Login with your new character's name!")
+                            // sends form value to login
+                            $.post("/api/login", { 
+                                    name : newChar.name
+                                })
+                            .done(function (data) {
+                                if (data.error) {
+                                    alert(data.error);
+                                } else {
+                                    window.localStorage.setItem("token", data.id);
+                                    window.location.href = "/";
+                                }
+                            });
                         }
                     });
             }
@@ -118,21 +128,20 @@
             if (!$("#inputCharNameLogin").val().trim()) {
                 alert("Please enter a name for your character.")
             } else {
-                console.log($("#inputCharNameLogin").val().trim());
+                //console.log($("#inputCharNameLogin").val().trim());
 
                 // sends form value to login
                 $.post("/api/login", { 
                         name : $("#inputCharNameLogin").val().trim()
                     })
-                    .done(function (data) {
-                        if (data.error) {
-                            alert(data.error);
-                        } else {
-                            window.localStorage.setItem("token", data.id);
-                            window.location.href = "/";
-                            alert("We found your character!")
-                        }
-                    });
+                .done(function (data) {
+                    if (data.error) {
+                        alert(data.error);
+                    } else {
+                        window.localStorage.setItem("token", data.id);
+                        window.location.href = "/";
+                    }
+                });
             }
         });
     </script>

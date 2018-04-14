@@ -44,7 +44,7 @@
                             </tr> -->
                             <tr>
                                 <th width='25%' scope="row">Name:</th>
-                                <td width='75%'><a href='#' id="character_name" class="trigger_modal_edit" data-action="edit_name" data-toggle="modal" data-target="#modal_edit">Character Name</a></td>
+                                <td width='75%'><a href='#' id="character_name" class="trigger_modal_edit" data-action="edit_name" data-update="name" data-toggle="modal" data-target="#modal_edit">Character Name</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -84,11 +84,11 @@
                     <tbody>
                         <tr>
                             <td width='16.66%'>XP:</td>
-                            <td width='16.66%'><a href='#' id="character_xp" class="trigger_modal_edit" data-action="edit_xp" data-toggle="modal" data-target="#modal_edit">#</a></td>
+                            <td width='16.66%'><a href='#' id="character_xp" class="trigger_modal_edit" data-action="edit_xp" data-update="xp" data-toggle="modal" data-target="#modal_edit">#</a></td>
                             <td width='16.66%'>Gold:</td>
-                            <td width='16.66%'><a href='#' id="character_gold" class="trigger_modal_edit" data-action="edit_gold" data-toggle="modal" data-target="#modal_edit">#</a></td>
+                            <td width='16.66%'><a href='#' id="character_gold" class="trigger_modal_edit" data-action="edit_gold" data-update="gold" data-toggle="modal" data-target="#modal_edit">#</a></td>
                             <td width='16.66%'>Notes:</td>
-                            <td width='16.66%'><a href='#' id="character_notes" class="trigger_modal_edit" data-action="edit_notes" data-toggle="modal" data-target="#modal_edit">#</a></td>
+                            <td width='16.66%'><a href='#' id="character_notes" class="trigger_modal_edit" data-action="edit_notes" data-update="notes" data-toggle="modal" data-target="#modal_edit">#</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -226,13 +226,13 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="edit_value" id="edit_label">Edit Value</label>
-                            <input type="text" class="form-control" id="edit_form" placeholder="John the Brute">
+                            <label for="edit_value" id="edit_label">New Value</label>
+                            <input type="text" class="form-control" id="edit_form" placeholder="New Value">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-round btn-fill" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-success btn-round btn-fill" id="update_button">Update</button>
+                        <button type="button" class="btn btn-success btn-round btn-fill" id="update_button" data-dismiss="modal">Update</button>
                     </div>
                 </div>
             </div>
@@ -243,8 +243,10 @@
 
 <script src="js/character_classes.js"></script> <!-- character class object defined here -->
 <script type="text/javascript">
-    var global = {};
-    var playerClass = null;
+    var global = {
+        edit_field: null,
+        char_data: null
+    };
 
     $(document).ready(function() {
         if (!localStorage.getItem('token')) {
@@ -262,8 +264,8 @@
                     success: function(data) {
 
                         global.char_data = data;
-                        console.log(global);
-                        console.log(data);
+                        // console.log(global);
+                        // console.log(data);
 
                         //-------------------------------------------
                         //Plug all of user's values into the UI
@@ -309,29 +311,36 @@
                         } else if (data.xp >= 45) {
                             lvl = 2
                         }
+
+                        // reset background to white
+                        for (var i = 1; i < 10; i++) {
+                            var target_to_hightlight = ".xp_lvl_" + i;
+                            $(target_to_hightlight).attr("style", "white");
+                        }
+                        // set correct lvl to green
                         var target_to_hightlight = ".xp_lvl_" + lvl;
                         $(target_to_hightlight).attr("style", "background-color:rgba(76, 175, 80, 0.3)");
 
                         // Character class info
-                        playerClass = character_classes[data.class_id.toString()];
-                        $("#character_class").text(playerClass.name);
+                        global.playerClass = character_classes[data.class_id.toString()];
+                        $("#character_class").text(global.playerClass.name);
 
                         // Render perks list
                         $("#perks_table").empty();
-                        for (var i = 0; i < playerClass.perks.length; i++) {
+                        for (var i = 0; i < global.playerClass.perks.length; i++) {
                             var indexPlus1 = i+1;
                             var currentkey = "perk_" + indexPlus1;
                             var current_perk = data[currentkey] ? data[currentkey] : 0;
-                            var learned = (current_perk >= playerClass.perks[i].checkboxQuantity) ? "X" : "";
+                            var learned = (current_perk >= global.playerClass.perks[i].checkboxQuantity) ? "X" : "";
 
                             var $tablerow = $("<tr>").appendTo($("#perks_table"));
 
                             var $td1 = $("<td>").appendTo($tablerow);
-                            var $a = $("<a>", {"data-action": "edit_perk_" + indexPlus1, "data-toggle": "modal", "data-target": "#modal_edit"}).html(current_perk).appendTo($td1);
+                            var $a = $("<a>", {"data-action": "edit_perk_" + indexPlus1, "data-toggle": "modal", "data-target": "#modal_edit", "data-update": currentkey, class: "trigger_modal_edit"}).html(current_perk).appendTo($td1);
 
-                            var $td2 = $("<td>").text(playerClass.perks[i].checkboxQuantity).appendTo($tablerow);
+                            var $td2 = $("<td>").text(global.playerClass.perks[i].checkboxQuantity).appendTo($tablerow);
                             var $td3 = $("<td>").text(learned).appendTo($tablerow);
-                            var $td4 = $("<td>").text(playerClass.perks[i].text).appendTo($tablerow);
+                            var $td4 = $("<td>").text(global.playerClass.perks[i].text).appendTo($tablerow);
                         }
                     }
                 })
@@ -353,7 +362,7 @@
                         $("#modal_info_body").append($embed);
                         break;
                     case "show_char_card":
-                        var $img = $("<img>", {src: playerClass.mat, width: "100%"});
+                        var $img = $("<img>", {src: global.playerClass.mat, width: "100%"});
                         $("#modal_info_body").append($img);
                         break;
                     default:
@@ -361,8 +370,61 @@
                 }
             })
 
-            $(".trigger_modal_edit").on("click", function() {
-                console.log("clicked modal trigger");
+            $(document).on("click", ".trigger_modal_edit", function(event) {
+                event.preventDefault();
+                $("#edit_form").val("");
+
+                var target_field = $(this).data("update");
+                global.edit_field = target_field;
+
+                target_field = target_field.split("_")[0];
+                $("#edit_title").text("Edit: " + target_field.charAt(0).toUpperCase() + target_field.slice(1));
+            })
+
+            $("#update_button").on("click", function(event){
+                event.preventDefault();
+
+                var new_value = $("#edit_form").val().trim(); // grab value from edit box
+                if (new_value == "" || new_value == null) return alert("Please enter a value into the edit field!")
+
+                // create data to send over for edit
+                var new_char_data = {};
+                new_char_data.id =  global.char_data.id;
+                new_char_data.name =  global.char_data.name;
+                new_char_data.xp =  global.char_data.xp;
+                new_char_data.gold =  global.char_data.gold;
+                new_char_data.notes =  global.char_data.notes;
+                new_char_data.perk_1 =  global.char_data.perk_1;
+                new_char_data.perk_2 =  global.char_data.perk_2;
+                new_char_data.perk_3 =  global.char_data.perk_3;
+                new_char_data.perk_4 =  global.char_data.perk_4;
+                new_char_data.perk_5 =  global.char_data.perk_5;
+                new_char_data.perk_6 =  global.char_data.perk_6;
+                new_char_data.perk_7 =  global.char_data.perk_7;
+                new_char_data.perk_8 =  global.char_data.perk_8;
+                new_char_data.perk_9 =  global.char_data.perk_9;
+                new_char_data.perk_10 =  global.char_data.perk_10;
+                new_char_data.perk_11 =  global.char_data.perk_11;
+                new_char_data.perk_12 =  global.char_data.perk_12;
+
+                new_char_data[global.edit_field] = new_value; // change the value of interest
+
+                // update call
+                $.ajax({
+                    url: "/api/characterinfo",
+                    type: 'PUT',
+                    data: new_char_data,
+                    success: function(data) {
+                        //console.log(data);
+                        if (data.error) {
+                            if (data.error = "Validation error") {alert("That name already exists!")}
+                            else {alert(data.error);}
+                        } else {
+                            renderHome();
+                        }
+                    }
+                })
+                
             })
 
             // allows user to sign out...deletes token and redirects to login
@@ -371,10 +433,10 @@
 
                 window.localStorage.removeItem("token");
                 window.location.href = "/register";
-                alert("Logging out...")
             });
-        }
-    })
+
+        } //has auth else
+    }) //document on ready
 </script>
 
     
