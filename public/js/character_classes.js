@@ -10,7 +10,7 @@
 var character_classes = {
     1: {
         name: "Inox Brute",
-        mat: "assets/img/character_mats/Brute.jpg",
+        mat: "assets/img/character_mats/Brute.JPG",
         perks: [
             {
                 checkboxQuantity: 1,
@@ -60,7 +60,7 @@ var character_classes = {
     },
     2: {
         name: "Quatryl Tinkerer",
-        mat: "assets/img/character_mats/Tinkerer.jpg",
+        mat: "assets/img/character_mats/Tinkerer.JPG",
         perks: [
             {
                 checkboxQuantity: 2,
@@ -110,7 +110,7 @@ var character_classes = {
     },
     3: {
         name: "Orchid Spellweaver",
-        mat: "assets/img/character_mats/Spellweaver.jpg",
+        mat: "assets/img/character_mats/Spellweaver.JPG",
         perks: [
             {
                 checkboxQuantity: 1,
@@ -156,7 +156,7 @@ var character_classes = {
     },
     4: {
         name: "Human Scoundrel",
-        mat: "assets/img/character_mats/Scoundrel.jpg",
+        mat: "assets/img/character_mats/Scoundrel.JPG",
         perks: [
             {
                 checkboxQuantity: 2,
@@ -206,7 +206,7 @@ var character_classes = {
     },
     5: {
         name: "Savvas Cragheart",
-        mat: "assets/img/character_mats/Cragheart.jpg",
+        mat: "assets/img/character_mats/Cragheart.JPG",
         perks: [
             {
                 checkboxQuantity: 1,
@@ -252,7 +252,7 @@ var character_classes = {
     },
     6: {
         name: "Vermling Mindtheif",
-        mat: "assets/img/character_mats/Mindtheif.jpg",
+        mat: "assets/img/character_mats/Mindtheif.JPG",
         perks: [
             {
                 checkboxQuantity: 2,
