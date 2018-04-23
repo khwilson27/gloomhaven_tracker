@@ -187,7 +187,7 @@
                             <thead>
                               <tr>
                                 <th scope="col">Current</th>
-                                <th scope="col">Required</th>
+                                <th scope="col">Available</th>
                                 <th scope="col">Learned</th>
                                 <th scope="col">Effect</th>
                               </tr>
@@ -331,7 +331,11 @@
                             var indexPlus1 = i+1;
                             var currentkey = "perk_" + indexPlus1;
                             var current_perk = data[currentkey] ? data[currentkey] : 0;
-                            var learned = (current_perk >= global.playerClass.perks[i].checkboxQuantity) ? "X" : "";
+
+                            var learned = "";
+                            for (var j = 1; j < global.playerClass.perks[i].checkboxQuantity + 1; j++) {
+                                learned += (current_perk >= j) ? "X" : "";
+                            }
 
                             var $tablerow = $("<tr>").appendTo($("#perks_table"));
 
@@ -340,7 +344,7 @@
 
                             var $td2 = $("<td>").text(global.playerClass.perks[i].checkboxQuantity).appendTo($tablerow);
                             var $td3 = $("<td>").text(learned).appendTo($tablerow);
-                            var $td4 = $("<td>").text(global.playerClass.perks[i].text).appendTo($tablerow);
+                            var $td4 = $("<td>").html(global.playerClass.perks[i].text).appendTo($tablerow);
                         }
                     }
                 })

@@ -30,23 +30,23 @@ var character_classes = {
             },
             {
                 checkboxQuantity: 2,
-                text: "Add three [RECYCLE][PUSH 1] cards"
+                text: "Add three &#8635[PUSH 1] cards"
             },
             {
                 checkboxQuantity: 1,
-                text: "Add two [RECYCLE][PIERCE 3] cards "
+                text: "Add two &#8635[PIERCE 3] cards "
             },
             {
                 checkboxQuantity: 2,
-                text: "Add one [RECYCLE][STUN] card"
+                text: "Add one &#8635[STUN] card"
             },
             {
                 checkboxQuantity: 1,
-                text: "Add one [RECYCLE][DISARM] card and one [RECYCLE][MUDDLE] card"
+                text: "Add one &#8635[DISARM] card and one &#8635[MUDDLE] card"
             },
             {
                 checkboxQuantity: 2,
-                text: "Add one [RECYCLE][ADD TARGET] card"
+                text: "Add one &#8635[ADD TARGET] card"
             },
             {
                 checkboxQuantity: 1,
@@ -80,11 +80,11 @@ var character_classes = {
             },
             {
                 checkboxQuantity: 1,
-                text: "Add two [RECYCLE][FIRE ELEMENT] cards"
+                text: "Add two &#8635[FIRE ELEMENT] cards"
             },
             {
                 checkboxQuantity: 1,
-                text: "Add three [RECYCLE][MUDDLE] cards "
+                text: "Add three &#8635[MUDDLE] cards "
             },
             {
                 checkboxQuantity: 2,
@@ -146,11 +146,11 @@ var character_classes = {
             },
             {
                 checkboxQuantity: 1,
-                text: "Add one [RECYCLE][EARTH ELEMENT] and one [RECYCLE][AIR ELEMENT] card"
+                text: "Add one &#8635[EARTH ELEMENT] and one &#8635[AIR ELEMENT] card"
             },
             {
                 checkboxQuantity: 1,
-                text: "Add one [RECYCLE][LIGHT ELEMENT] and one [RECYCLE][DARK ELEMENT] card"
+                text: "Add one &#8635[LIGHT ELEMENT] and one &#8635[DARK ELEMENT] card"
             }
         ]
     },
@@ -180,23 +180,23 @@ var character_classes = {
             },
             {
                 checkboxQuantity: 2,
-                text: "Add two [RECYCLE] +1 cards"
+                text: "Add two &#8635 +1 cards"
             },
             {
                 checkboxQuantity: 1,
-                text: "Add two [RECYCLE][PIERCE 3] cards"
+                text: "Add two &#8635[PIERCE 3] cards"
             },
             {
                 checkboxQuantity: 2,
-                text: "Add two [RECYCLE][POISON] cards"
+                text: "Add two &#8635[POISON] cards"
             },
             {
                 checkboxQuantity: 1,
-                text: "Add two [RECYCLE][MUDDLE] cards"
+                text: "Add two &#8635[MUDDLE] cards"
             },
             {
                 checkboxQuantity: 1,
-                text: "Add one [RECYCLE][INVISIBLE] card"
+                text: "Add one &#8635[INVISIBLE] card"
             },
             {
                 checkboxQuantity: 1,
@@ -230,15 +230,15 @@ var character_classes = {
             },
             {
                 checkboxQuantity: 1,
-                text: "Add two [RECYCLE][PUSH 2] cards "
+                text: "Add two &#8635[PUSH 2] cards "
             },
             {
                 checkboxQuantity: 2,
-                text: "Add two [RECYCLE][EARTH ELEMENT] card"
+                text: "Add two &#8635[EARTH ELEMENT] card"
             },
             {
                 checkboxQuantity: 1,
-                text: "Add two [RECYCLE][AIR ELEMENT] card"
+                text: "Add two &#8635[AIR ELEMENT] card"
             },
             {
                 checkboxQuantity: 1,
@@ -276,27 +276,27 @@ var character_classes = {
             },
             {
                 checkboxQuantity: 2,
-                text: "Add two [RECYCLE] +1 cards"
+                text: "Add two &#8635 +1 cards"
             },
             {
                 checkboxQuantity: 1,
-                text: "Add three [RECYCLE][PULL 1] cards"
+                text: "Add three &#8635[PULL 1] cards"
             },
             {
                 checkboxQuantity: 1,
-                text: "Add three [RECYCLE][MUDDLE] cards"
+                text: "Add three &#8635[MUDDLE] cards"
             },
             {
                 checkboxQuantity: 1,
-                text: "Add two [RECYCLE][IMMOBILIZE] cards"
+                text: "Add two &#8635[IMMOBILIZE] cards"
             },
             {
                 checkboxQuantity: 1,
-                text: "Add one [RECYCLE][STUN] card"
+                text: "Add one &#8635[STUN] card"
             },
             {
                 checkboxQuantity: 1,
-                text: "Add one [RECYCLE][DISARM] and one [RECYCLE][MUDDLE] card"
+                text: "Add one &#8635[DISARM] and one &#8635[MUDDLE] card"
             },
             {
                 checkboxQuantity: 1,
